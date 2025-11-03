@@ -5,6 +5,23 @@ All notable changes to the Kagome C++ project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2025-11-03
+
+### Fixed
+- **Critical Memory Leak in Rspamd Integration**: Fixed unbounded memory growth in the static lattice node pool that affected long-running processes like Rspamd
+  - Added `MAX_POOL_SIZE` limit (2000 nodes) to prevent unbounded pool growth
+  - Implemented `clear_global_pool()` method to explicitly free pooled memory
+  - Modified `kagome_deinit()` to call pool cleanup, ensuring memory is freed on configuration reload
+  - Added comprehensive memory leak test program to verify the fix
+  - Memory usage now stabilizes instead of growing indefinitely in production deployments
+  - This fix is critical for production Rspamd servers running for days or weeks
+
+### Technical Details
+- The static `ObjectPool<Node>` was accumulating nodes based on peak tokenization size and never releasing them
+- Pool would grow to hundreds of MB in long-running processes
+- AddressSanitizer did not detect this leak as memory was technically "reachable"
+- Fix ensures bounded memory usage (~52MB stable vs unbounded growth)
+
 ## [1.0.0] - 2024-02-01
 
 ### Added
