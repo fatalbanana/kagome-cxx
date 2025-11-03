@@ -23,6 +23,10 @@ enum class LatticeMode : std::uint8_t {
 template<typename T>
 class ObjectPool {
 public:
+	// Limit pool size to prevent unbounded memory growth in long-running processes
+	// This is a reasonable limit for typical Japanese text tokenization
+	static constexpr size_t MAX_POOL_SIZE = 2000;
+
 	ObjectPool() = default;
 	~ObjectPool()
 	{
@@ -44,7 +48,12 @@ public:
 	void put(T *obj)
 	{
 		if (obj) {
-			// Reset object state
+			// If pool is at capacity, delete the object instead of keeping it
+			if (pool_.size() >= MAX_POOL_SIZE) {
+				delete obj;
+				return;
+			}
+			// Reset object state and return to pool
 			*obj = T{};
 			pool_.push_back(obj);
 		}
@@ -57,6 +66,12 @@ public:
 			delete obj;
 		}
 		pool_.clear();
+	}
+
+	/// Get current pool size (for monitoring)
+	size_t size() const
+	{
+		return pool_.size();
 	}
 
 private:
@@ -110,6 +125,9 @@ public:
 
 	/// Debug string representation
 	[[nodiscard]] std::string to_string() const;
+
+	/// Clear the global node pool (call this to free pooled memory)
+	static void clear_global_pool();
 
 private:
 	std::shared_ptr<dict::Dict> dict_;

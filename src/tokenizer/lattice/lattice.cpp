@@ -516,6 +516,11 @@ std::string Lattice::to_string() const
 	return result;
 }
 
+void Lattice::clear_global_pool()
+{
+	node_pool_.clear();
+}
+
 std::int32_t Lattice::additional_cost(const Node *node) const
 {
 	if (!node || node->surface().empty()) {

@@ -1,6 +1,7 @@
 #include "kagome/c_api/kagome_c_api.h"
 #include "kagome/tokenizer/tokenizer.hpp"
 #include "kagome/tokenizer/token.hpp"
+#include "kagome/tokenizer/lattice/lattice.hpp"
 #include "kagome/dict/dict.hpp"
 
 #include <memory>
@@ -238,6 +239,9 @@ int kagome_init(const ucl_object_t * /* config */, char *error_buf, size_t error
 void kagome_deinit(void)
 {
 	g_tokenizer.reset();
+	// Clear the global lattice node pool to prevent memory accumulation
+	// in long-running processes (e.g., Rspamd)
+	kagome::tokenizer::lattice::Lattice::clear_global_pool();
 }
 
 double kagome_detect_language(const char *text, size_t len)

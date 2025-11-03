@@ -160,6 +160,16 @@ target_link_libraries(kagome_tests PRIVATE
 
 add_test(NAME kagome_tests COMMAND kagome_tests)
 
+# Memory leak test
+add_executable(kagome_memory_leak_test
+    src/memory_leak_test.cpp
+)
+
+target_link_libraries(kagome_memory_leak_test PRIVATE
+    kagome_c_api
+    kagome_cpp
+)
+
 if(KAGOME_ENABLE_ASAN)
     if(NOT (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU"))
         message(FATAL_ERROR "KAGOME_ENABLE_ASAN requires Clang or GCC.")
@@ -172,7 +182,7 @@ if(KAGOME_ENABLE_ASAN)
 
     set(KAGOME_ASAN_LINK_FLAGS -fsanitize=address)
 
-    foreach(kagome_target kagome_cpp kagome_c_api kagome_rspamd_tokenizer kagome_main kagome_tests)
+    foreach(kagome_target kagome_cpp kagome_c_api kagome_rspamd_tokenizer kagome_main kagome_tests kagome_memory_leak_test)
         if(TARGET ${kagome_target})
             target_compile_options(${kagome_target} PRIVATE ${KAGOME_ASAN_COMPILE_FLAGS})
             target_link_options(${kagome_target} PRIVATE ${KAGOME_ASAN_LINK_FLAGS})
