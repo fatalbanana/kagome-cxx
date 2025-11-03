@@ -5,6 +5,8 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+option(KAGOME_ENABLE_ASAN "Enable AddressSanitizer instrumentation" OFF)
+
 # Find required packages
 find_package(PkgConfig REQUIRED)
 
@@ -157,6 +159,26 @@ target_link_libraries(kagome_tests PRIVATE
 )
 
 add_test(NAME kagome_tests COMMAND kagome_tests)
+
+if(KAGOME_ENABLE_ASAN)
+    if(NOT (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU"))
+        message(FATAL_ERROR "KAGOME_ENABLE_ASAN requires Clang or GCC.")
+    endif()
+
+    set(KAGOME_ASAN_COMPILE_FLAGS -fsanitize=address -fno-omit-frame-pointer)
+    if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+        list(APPEND KAGOME_ASAN_COMPILE_FLAGS -fsanitize-address-use-after-scope)
+    endif()
+
+    set(KAGOME_ASAN_LINK_FLAGS -fsanitize=address)
+
+    foreach(kagome_target kagome_cpp kagome_c_api kagome_rspamd_tokenizer kagome_main kagome_tests)
+        if(TARGET ${kagome_target})
+            target_compile_options(${kagome_target} PRIVATE ${KAGOME_ASAN_COMPILE_FLAGS})
+            target_link_options(${kagome_target} PRIVATE ${KAGOME_ASAN_LINK_FLAGS})
+        endif()
+    endforeach()
+endif()
 
 # Installation rules
 include(GNUInstallDirs)
