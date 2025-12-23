@@ -19,7 +19,7 @@ on:
         description: 'Repository to build from (owner/repo format)'
         required: false
         type: string
-        default: 'fatalbanana/kagome-cxx'
+        default: 'rspamd/kagome-cxx'
       distributions:
         description: 'Distributions to build - comma-separated list (e.g., centos-9,debian-trixie). Leave empty to build all.'
         required: false
