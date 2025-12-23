@@ -67,7 +67,6 @@ local build_test_jobs(name) = {
   },
   [name + '-build-' + arch]: {
     'if': '${{ (' + include_distro(name) + ') && (' + include_arch(arch) + ') }}',
-    'timeout-minutes': 60,
     uses: './.github/workflows/build_packages.yml',
     with: build_with(arch),
   }

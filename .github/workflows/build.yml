@@ -2,7 +2,6 @@
    "jobs": {
       "centos-10-build-ARM64": {
          "if": "${{ (inputs.distributions == '' || contains(format(',{0},', inputs.distributions), format(',{0},', 'centos-10'))) && (inputs.architectures == '' || contains(format(',{0},', inputs.architectures), format(',{0},', 'ARM64'))) }}",
-         "timeout-minutes": 60,
          "uses": "./.github/workflows/build_packages.yml",
          "with": {
             "branch": "${{ inputs.branch }}",
@@ -16,7 +15,6 @@
       },
       "centos-10-build-X64": {
          "if": "${{ (inputs.distributions == '' || contains(format(',{0},', inputs.distributions), format(',{0},', 'centos-10'))) && (inputs.architectures == '' || contains(format(',{0},', inputs.architectures), format(',{0},', 'X64'))) }}",
-         "timeout-minutes": 60,
          "uses": "./.github/workflows/build_packages.yml",
          "with": {
             "branch": "${{ inputs.branch }}",
@@ -30,7 +28,6 @@
       },
       "centos-8-build-ARM64": {
          "if": "${{ (inputs.distributions == '' || contains(format(',{0},', inputs.distributions), format(',{0},', 'centos-8'))) && (inputs.architectures == '' || contains(format(',{0},', inputs.architectures), format(',{0},', 'ARM64'))) }}",
-         "timeout-minutes": 60,
          "uses": "./.github/workflows/build_packages.yml",
          "with": {
             "branch": "${{ inputs.branch }}",
@@ -44,7 +41,6 @@
       },
       "centos-8-build-X64": {
          "if": "${{ (inputs.distributions == '' || contains(format(',{0},', inputs.distributions), format(',{0},', 'centos-8'))) && (inputs.architectures == '' || contains(format(',{0},', inputs.architectures), format(',{0},', 'X64'))) }}",
-         "timeout-minutes": 60,
          "uses": "./.github/workflows/build_packages.yml",
          "with": {
             "branch": "${{ inputs.branch }}",
@@ -58,7 +54,6 @@
       },
       "centos-9-build-ARM64": {
          "if": "${{ (inputs.distributions == '' || contains(format(',{0},', inputs.distributions), format(',{0},', 'centos-9'))) && (inputs.architectures == '' || contains(format(',{0},', inputs.architectures), format(',{0},', 'ARM64'))) }}",
-         "timeout-minutes": 60,
          "uses": "./.github/workflows/build_packages.yml",
          "with": {
             "branch": "${{ inputs.branch }}",
@@ -72,7 +67,6 @@
       },
       "centos-9-build-X64": {
          "if": "${{ (inputs.distributions == '' || contains(format(',{0},', inputs.distributions), format(',{0},', 'centos-9'))) && (inputs.architectures == '' || contains(format(',{0},', inputs.architectures), format(',{0},', 'X64'))) }}",
-         "timeout-minutes": 60,
          "uses": "./.github/workflows/build_packages.yml",
          "with": {
             "branch": "${{ inputs.branch }}",
@@ -86,7 +80,6 @@
       },
       "debian-bookworm-build-ARM64": {
          "if": "${{ (inputs.distributions == '' || contains(format(',{0},', inputs.distributions), format(',{0},', 'debian-bookworm'))) && (inputs.architectures == '' || contains(format(',{0},', inputs.architectures), format(',{0},', 'ARM64'))) }}",
-         "timeout-minutes": 60,
          "uses": "./.github/workflows/build_packages.yml",
          "with": {
             "branch": "${{ inputs.branch }}",
@@ -100,7 +93,6 @@
       },
       "debian-bookworm-build-X64": {
          "if": "${{ (inputs.distributions == '' || contains(format(',{0},', inputs.distributions), format(',{0},', 'debian-bookworm'))) && (inputs.architectures == '' || contains(format(',{0},', inputs.architectures), format(',{0},', 'X64'))) }}",
-         "timeout-minutes": 60,
          "uses": "./.github/workflows/build_packages.yml",
          "with": {
             "branch": "${{ inputs.branch }}",
@@ -114,7 +106,6 @@
       },
       "debian-bullseye-build-ARM64": {
          "if": "${{ (inputs.distributions == '' || contains(format(',{0},', inputs.distributions), format(',{0},', 'debian-bullseye'))) && (inputs.architectures == '' || contains(format(',{0},', inputs.architectures), format(',{0},', 'ARM64'))) }}",
-         "timeout-minutes": 60,
          "uses": "./.github/workflows/build_packages.yml",
          "with": {
             "branch": "${{ inputs.branch }}",
@@ -128,7 +119,6 @@
       },
       "debian-bullseye-build-X64": {
          "if": "${{ (inputs.distributions == '' || contains(format(',{0},', inputs.distributions), format(',{0},', 'debian-bullseye'))) && (inputs.architectures == '' || contains(format(',{0},', inputs.architectures), format(',{0},', 'X64'))) }}",
-         "timeout-minutes": 60,
          "uses": "./.github/workflows/build_packages.yml",
          "with": {
             "branch": "${{ inputs.branch }}",
@@ -142,7 +132,6 @@
       },
       "debian-trixie-build-ARM64": {
          "if": "${{ (inputs.distributions == '' || contains(format(',{0},', inputs.distributions), format(',{0},', 'debian-trixie'))) && (inputs.architectures == '' || contains(format(',{0},', inputs.architectures), format(',{0},', 'ARM64'))) }}",
-         "timeout-minutes": 60,
          "uses": "./.github/workflows/build_packages.yml",
          "with": {
             "branch": "${{ inputs.branch }}",
@@ -156,7 +145,6 @@
       },
       "debian-trixie-build-X64": {
          "if": "${{ (inputs.distributions == '' || contains(format(',{0},', inputs.distributions), format(',{0},', 'debian-trixie'))) && (inputs.architectures == '' || contains(format(',{0},', inputs.architectures), format(',{0},', 'X64'))) }}",
-         "timeout-minutes": 60,
          "uses": "./.github/workflows/build_packages.yml",
          "with": {
             "branch": "${{ inputs.branch }}",
@@ -170,7 +158,6 @@
       },
       "ubuntu-jammy-build-ARM64": {
          "if": "${{ (inputs.distributions == '' || contains(format(',{0},', inputs.distributions), format(',{0},', 'ubuntu-jammy'))) && (inputs.architectures == '' || contains(format(',{0},', inputs.architectures), format(',{0},', 'ARM64'))) }}",
-         "timeout-minutes": 60,
          "uses": "./.github/workflows/build_packages.yml",
          "with": {
             "branch": "${{ inputs.branch }}",
@@ -184,7 +171,6 @@
       },
       "ubuntu-jammy-build-X64": {
          "if": "${{ (inputs.distributions == '' || contains(format(',{0},', inputs.distributions), format(',{0},', 'ubuntu-jammy'))) && (inputs.architectures == '' || contains(format(',{0},', inputs.architectures), format(',{0},', 'X64'))) }}",
-         "timeout-minutes": 60,
          "uses": "./.github/workflows/build_packages.yml",
          "with": {
             "branch": "${{ inputs.branch }}",
@@ -198,7 +184,6 @@
       },
       "ubuntu-noble-build-ARM64": {
          "if": "${{ (inputs.distributions == '' || contains(format(',{0},', inputs.distributions), format(',{0},', 'ubuntu-noble'))) && (inputs.architectures == '' || contains(format(',{0},', inputs.architectures), format(',{0},', 'ARM64'))) }}",
-         "timeout-minutes": 60,
          "uses": "./.github/workflows/build_packages.yml",
          "with": {
             "branch": "${{ inputs.branch }}",
@@ -212,7 +197,6 @@
       },
       "ubuntu-noble-build-X64": {
          "if": "${{ (inputs.distributions == '' || contains(format(',{0},', inputs.distributions), format(',{0},', 'ubuntu-noble'))) && (inputs.architectures == '' || contains(format(',{0},', inputs.architectures), format(',{0},', 'X64'))) }}",
-         "timeout-minutes": 60,
          "uses": "./.github/workflows/build_packages.yml",
          "with": {
             "branch": "${{ inputs.branch }}",
