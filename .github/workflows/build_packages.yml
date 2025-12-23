@@ -27,10 +27,6 @@ on:
         required: false
         type: string
         description: 'Repository to build from (owner/repo format)'
-      enable_asan:
-        required: false
-        type: boolean
-        description: 'If true, build ASAN variants'
 
     outputs:
       revision:
@@ -93,13 +89,10 @@ jobs:
 
       - name: Build packages
         run: |
-          export ASAN=0
           export BUILDDIR=${{ github.workspace }}/kagome-cxx/build
           export DEBIAN=0
           export DOCKER_IMAGE=${{ inputs.name }}
           export DOCKER_REPO=ghcr.io/rspamd/rspamd-build-docker
-          export LUAJIT=1
-          export PRESERVE_ENVVARS=LUAJIT,ASAN,DEB_BUILD_PROFILES
           export RELEASE=$PACKAGE_VERSION
           export RPM=0
           export VERSION=$KAGOME_VERSION
@@ -109,9 +102,6 @@ jobs:
 
           if [[ "${{ env.PKG_TYPE }}" == "deb" ]]; then
             export DEBIAN=1
-            if [ "${{ inputs.enable_asan }}" != "true" ]; then
-               export DEB_BUILD_PROFILES="noasan"
-            fi
           elif [[ "${{ env.PKG_TYPE }}" == "rpm" ]]; then
             export RPM=1
           else
@@ -121,10 +111,6 @@ jobs:
 
           cd kagome-cxx
           ../packpack/packpack
-          if [ $RPM -eq 1 ] && [ "${{ inputs.enable_asan }}" == "true" ]; then
-            export ASAN=1
-            ../packpack/packpack
-          fi
 
       - name: Collect outputs by distro name
         run: |

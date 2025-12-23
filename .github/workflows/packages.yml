@@ -28,11 +28,6 @@ on:
         description: 'Architectures to build - comma-separated list (e.g., X64,ARM64). Leave empty to build all.'
         required: false
         type: string
-      enable_asan:
-        description: 'If true, build ASAN variants of the package'
-        required: false
-        type: boolean
-        default: false
 
 jobs:
   validate_inputs:
@@ -56,4 +51,3 @@ jobs:
       repo: ${{ github.event.inputs.repo }}
       distributions: ${{ github.event.inputs.distributions }}
       architectures: ${{ github.event.inputs.architectures }}
-      enable_asan: ${{ github.event.inputs.enable_asan == 'true' }}

@@ -5,7 +5,6 @@
          "uses": "./.github/workflows/build_packages.yml",
          "with": {
             "branch": "${{ inputs.branch }}",
-            "enable_asan": "${{ inputs.enable_asan }}",
             "experimental": "${{ inputs.experimental }}",
             "name": "centos-10",
             "platform": "ARM64",
@@ -18,7 +17,6 @@
          "uses": "./.github/workflows/build_packages.yml",
          "with": {
             "branch": "${{ inputs.branch }}",
-            "enable_asan": "${{ inputs.enable_asan }}",
             "experimental": "${{ inputs.experimental }}",
             "name": "centos-10",
             "platform": "X64",
@@ -31,7 +29,6 @@
          "uses": "./.github/workflows/build_packages.yml",
          "with": {
             "branch": "${{ inputs.branch }}",
-            "enable_asan": "${{ inputs.enable_asan }}",
             "experimental": "${{ inputs.experimental }}",
             "name": "centos-9",
             "platform": "ARM64",
@@ -44,7 +41,6 @@
          "uses": "./.github/workflows/build_packages.yml",
          "with": {
             "branch": "${{ inputs.branch }}",
-            "enable_asan": "${{ inputs.enable_asan }}",
             "experimental": "${{ inputs.experimental }}",
             "name": "centos-9",
             "platform": "X64",
@@ -57,7 +53,6 @@
          "uses": "./.github/workflows/build_packages.yml",
          "with": {
             "branch": "${{ inputs.branch }}",
-            "enable_asan": "${{ inputs.enable_asan }}",
             "experimental": "${{ inputs.experimental }}",
             "name": "debian-bookworm",
             "platform": "ARM64",
@@ -70,7 +65,6 @@
          "uses": "./.github/workflows/build_packages.yml",
          "with": {
             "branch": "${{ inputs.branch }}",
-            "enable_asan": "${{ inputs.enable_asan }}",
             "experimental": "${{ inputs.experimental }}",
             "name": "debian-bookworm",
             "platform": "X64",
@@ -83,7 +77,6 @@
          "uses": "./.github/workflows/build_packages.yml",
          "with": {
             "branch": "${{ inputs.branch }}",
-            "enable_asan": "${{ inputs.enable_asan }}",
             "experimental": "${{ inputs.experimental }}",
             "name": "debian-trixie",
             "platform": "ARM64",
@@ -96,7 +89,6 @@
          "uses": "./.github/workflows/build_packages.yml",
          "with": {
             "branch": "${{ inputs.branch }}",
-            "enable_asan": "${{ inputs.enable_asan }}",
             "experimental": "${{ inputs.experimental }}",
             "name": "debian-trixie",
             "platform": "X64",
@@ -109,7 +101,6 @@
          "uses": "./.github/workflows/build_packages.yml",
          "with": {
             "branch": "${{ inputs.branch }}",
-            "enable_asan": "${{ inputs.enable_asan }}",
             "experimental": "${{ inputs.experimental }}",
             "name": "ubuntu-jammy",
             "platform": "ARM64",
@@ -122,7 +113,6 @@
          "uses": "./.github/workflows/build_packages.yml",
          "with": {
             "branch": "${{ inputs.branch }}",
-            "enable_asan": "${{ inputs.enable_asan }}",
             "experimental": "${{ inputs.experimental }}",
             "name": "ubuntu-jammy",
             "platform": "X64",
@@ -135,7 +125,6 @@
          "uses": "./.github/workflows/build_packages.yml",
          "with": {
             "branch": "${{ inputs.branch }}",
-            "enable_asan": "${{ inputs.enable_asan }}",
             "experimental": "${{ inputs.experimental }}",
             "name": "ubuntu-noble",
             "platform": "ARM64",
@@ -148,7 +137,6 @@
          "uses": "./.github/workflows/build_packages.yml",
          "with": {
             "branch": "${{ inputs.branch }}",
-            "enable_asan": "${{ inputs.enable_asan }}",
             "experimental": "${{ inputs.experimental }}",
             "name": "ubuntu-noble",
             "platform": "X64",
@@ -172,10 +160,6 @@
             "distributions": {
                "required": false,
                "type": "string"
-            },
-            "enable_asan": {
-               "required": false,
-               "type": "boolean"
             },
             "experimental": {
                "required": false,

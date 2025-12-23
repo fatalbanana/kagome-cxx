@@ -38,10 +38,6 @@ local build_pipeline = {
           required: false,
           type: 'string',
         },
-        enable_asan: {
-          required: false,
-          type: 'boolean',
-        },
       },
     },
   },
@@ -61,7 +57,6 @@ local build_test_jobs(name) = {
     experimental: '${{ inputs.experimental }}',
     branch: '${{ inputs.branch }}',
     repo: '${{ inputs.repo }}',
-    enable_asan: '${{ inputs.enable_asan }}',
   },
   [name + '-build-' + arch]: {
     'if': '${{ (' + include_distro(name) + ') && (' + include_arch(arch) + ') }}',
