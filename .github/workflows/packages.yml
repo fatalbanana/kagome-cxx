@@ -14,7 +14,7 @@ on:
         description: 'Branch to build from (only used for experimental builds)'
         required: false
         type: string
-        default: 'main'
+        default: 'master'
       repo:
         description: 'Repository to build from (owner/repo format)'
         required: false
