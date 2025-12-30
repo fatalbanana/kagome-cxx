@@ -1,7 +1,7 @@
 Source: kagome-cpp
 Section: libs
 Priority: optional
-Maintainer: Kagome C++ Team <support@example.com>
+Maintainer: Kagome C++ Team <vsevolod@rspamd.com>
 Build-Depends: debhelper-compat (= 13),
                cmake (>= 3.22),
                pkg-config,
@@ -10,9 +10,9 @@ Build-Depends: debhelper-compat (= 13),
                libarchive-dev,
                libc6-dev
 Standards-Version: 4.5.1
-Homepage: https://github.com/example/kagome-cxx
-Vcs-Git: https://github.com/example/kagome-cxx.git
-Vcs-Browser: https://github.com/example/kagome-cxx
+Homepage: https://github.com/rspamd/kagome-cxx
+Vcs-Git: https://github.com/rspamd/kagome-cxx.git
+Vcs-Browser: https://github.com/rspamd/kagome-cxx
 
 Package: libkagome-cpp-dev
 Architecture: any

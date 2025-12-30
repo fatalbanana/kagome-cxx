@@ -15,12 +15,19 @@
 # package maintainers to append LDFLAGS
 #export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
 
+# Check if ASAN is enabled via DEB_BUILD_OPTIONS
+ifneq (,$(filter asan,$(DEB_BUILD_OPTIONS)))
+KAGOME_CMAKE_EXTRA_FLAGS = -DCMAKE_BUILD_TYPE=Debug -DKAGOME_ENABLE_ASAN=ON
+else
+KAGOME_CMAKE_EXTRA_FLAGS = -DCMAKE_BUILD_TYPE=Release
+endif
+
 %:
 	dh $@ --buildsystem=cmake
 
 override_dh_auto_configure:
 	dh_auto_configure -- \
-		-DCMAKE_BUILD_TYPE=Release \
+		$(KAGOME_CMAKE_EXTRA_FLAGS) \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib/$(DEB_HOST_MULTIARCH)
 
