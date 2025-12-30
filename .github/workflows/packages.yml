@@ -56,7 +56,4 @@ jobs:
       repo: ${{ github.event.inputs.repo }}
       distributions: ${{ github.event.inputs.distributions }}
       architectures: ${{ github.event.inputs.architectures }}
-    env:
-      ASAN: ${{ github.event.inputs.asan == 'true' && '1' || '' }}
-      DEB_BUILD_OPTIONS: ${{ github.event.inputs.asan == 'true' && 'asan' || '' }}
-      PRESERVE_ENVVARS: 'ASAN,DEB_BUILD_OPTIONS'
+      asan: ${{ github.event.inputs.asan == 'true' }}
