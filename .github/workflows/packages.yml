@@ -28,6 +28,11 @@ on:
         description: 'Architectures to build - comma-separated list (e.g., X64,ARM64). Leave empty to build all.'
         required: false
         type: string
+      asan:
+        description: 'Build with AddressSanitizer (ASAN) enabled'
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   validate_inputs:
@@ -51,3 +56,7 @@ jobs:
       repo: ${{ github.event.inputs.repo }}
       distributions: ${{ github.event.inputs.distributions }}
       architectures: ${{ github.event.inputs.architectures }}
+    env:
+      ASAN: ${{ github.event.inputs.asan == 'true' && '1' || '' }}
+      DEB_BUILD_OPTIONS: ${{ github.event.inputs.asan == 'true' && 'asan' || '' }}
+      PRESERVE_ENVVARS: 'ASAN,DEB_BUILD_OPTIONS'
