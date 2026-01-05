@@ -26,8 +26,14 @@ pkg_check_modules(LIBARCHIVE REQUIRED libarchive)
 # Add dependencies via FetchContent
 include(FetchContent)
 
+# When FETCHCONTENT_FULLY_DISCONNECTED is ON, override it to allow downloads
+# This is needed for offline builds where we still want FetchContent to work
+set(FETCHCONTENT_FULLY_DISCONNECTED OFF CACHE BOOL "Allow FetchContent downloads" FORCE)
+
 # Disable installation of FetchContent dependencies
 set(FMT_INSTALL OFF CACHE BOOL "" FORCE)
+# Use fmt as header-only library
+set(FMT_HEADER_ONLY ON CACHE BOOL "" FORCE)
 
 # Add fmt library
 FetchContent_Declare(
@@ -36,9 +42,6 @@ FetchContent_Declare(
     GIT_TAG 10.2.1
 )
 FetchContent_MakeAvailable(fmt)
-
-# Ensure fmt is compiled with -fPIC for shared library compatibility
-set_target_properties(fmt PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 # Add unordered_dense
 FetchContent_Declare(
@@ -70,7 +73,7 @@ target_include_directories(kagome_cpp PUBLIC
 )
 
 target_link_libraries(kagome_cpp PUBLIC
-    fmt::fmt
+    fmt::fmt-header-only
     unordered_dense::unordered_dense
     ${ICU_LIBRARIES}
     ${LIBARCHIVE_LIBRARIES}
@@ -169,6 +172,10 @@ target_link_libraries(kagome_memory_leak_test PRIVATE
     kagome_c_api
     kagome_cpp
 )
+
+if(KAGOME_ENABLE_ASAN)
+    add_test(NAME kagome_memory_leak_test COMMAND kagome_memory_leak_test)
+endif()
 
 if(KAGOME_ENABLE_ASAN)
     if(NOT (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU"))
