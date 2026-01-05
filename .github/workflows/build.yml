@@ -1,0 +1,195 @@
+{
+   "jobs": {
+      "centos-10-build-ARM64": {
+         "if": "${{ (inputs.distributions == '' || contains(format(',{0},', inputs.distributions), format(',{0},', 'centos-10'))) && (inputs.architectures == '' || contains(format(',{0},', inputs.architectures), format(',{0},', 'ARM64'))) }}",
+         "uses": "./.github/workflows/build_packages.yml",
+         "with": {
+            "asan": "${{ inputs.asan }}",
+            "branch": "${{ inputs.branch }}",
+            "experimental": "${{ inputs.experimental }}",
+            "name": "centos-10",
+            "platform": "ARM64",
+            "repo": "${{ inputs.repo }}",
+            "version": "${{ inputs.version }}"
+         }
+      },
+      "centos-10-build-X64": {
+         "if": "${{ (inputs.distributions == '' || contains(format(',{0},', inputs.distributions), format(',{0},', 'centos-10'))) && (inputs.architectures == '' || contains(format(',{0},', inputs.architectures), format(',{0},', 'X64'))) }}",
+         "uses": "./.github/workflows/build_packages.yml",
+         "with": {
+            "asan": "${{ inputs.asan }}",
+            "branch": "${{ inputs.branch }}",
+            "experimental": "${{ inputs.experimental }}",
+            "name": "centos-10",
+            "platform": "X64",
+            "repo": "${{ inputs.repo }}",
+            "version": "${{ inputs.version }}"
+         }
+      },
+      "centos-9-build-ARM64": {
+         "if": "${{ (inputs.distributions == '' || contains(format(',{0},', inputs.distributions), format(',{0},', 'centos-9'))) && (inputs.architectures == '' || contains(format(',{0},', inputs.architectures), format(',{0},', 'ARM64'))) }}",
+         "uses": "./.github/workflows/build_packages.yml",
+         "with": {
+            "asan": "${{ inputs.asan }}",
+            "branch": "${{ inputs.branch }}",
+            "experimental": "${{ inputs.experimental }}",
+            "name": "centos-9",
+            "platform": "ARM64",
+            "repo": "${{ inputs.repo }}",
+            "version": "${{ inputs.version }}"
+         }
+      },
+      "centos-9-build-X64": {
+         "if": "${{ (inputs.distributions == '' || contains(format(',{0},', inputs.distributions), format(',{0},', 'centos-9'))) && (inputs.architectures == '' || contains(format(',{0},', inputs.architectures), format(',{0},', 'X64'))) }}",
+         "uses": "./.github/workflows/build_packages.yml",
+         "with": {
+            "asan": "${{ inputs.asan }}",
+            "branch": "${{ inputs.branch }}",
+            "experimental": "${{ inputs.experimental }}",
+            "name": "centos-9",
+            "platform": "X64",
+            "repo": "${{ inputs.repo }}",
+            "version": "${{ inputs.version }}"
+         }
+      },
+      "debian-bookworm-build-ARM64": {
+         "if": "${{ (inputs.distributions == '' || contains(format(',{0},', inputs.distributions), format(',{0},', 'debian-bookworm'))) && (inputs.architectures == '' || contains(format(',{0},', inputs.architectures), format(',{0},', 'ARM64'))) }}",
+         "uses": "./.github/workflows/build_packages.yml",
+         "with": {
+            "asan": "${{ inputs.asan }}",
+            "branch": "${{ inputs.branch }}",
+            "experimental": "${{ inputs.experimental }}",
+            "name": "debian-bookworm",
+            "platform": "ARM64",
+            "repo": "${{ inputs.repo }}",
+            "version": "${{ inputs.version }}"
+         }
+      },
+      "debian-bookworm-build-X64": {
+         "if": "${{ (inputs.distributions == '' || contains(format(',{0},', inputs.distributions), format(',{0},', 'debian-bookworm'))) && (inputs.architectures == '' || contains(format(',{0},', inputs.architectures), format(',{0},', 'X64'))) }}",
+         "uses": "./.github/workflows/build_packages.yml",
+         "with": {
+            "asan": "${{ inputs.asan }}",
+            "branch": "${{ inputs.branch }}",
+            "experimental": "${{ inputs.experimental }}",
+            "name": "debian-bookworm",
+            "platform": "X64",
+            "repo": "${{ inputs.repo }}",
+            "version": "${{ inputs.version }}"
+         }
+      },
+      "debian-trixie-build-ARM64": {
+         "if": "${{ (inputs.distributions == '' || contains(format(',{0},', inputs.distributions), format(',{0},', 'debian-trixie'))) && (inputs.architectures == '' || contains(format(',{0},', inputs.architectures), format(',{0},', 'ARM64'))) }}",
+         "uses": "./.github/workflows/build_packages.yml",
+         "with": {
+            "asan": "${{ inputs.asan }}",
+            "branch": "${{ inputs.branch }}",
+            "experimental": "${{ inputs.experimental }}",
+            "name": "debian-trixie",
+            "platform": "ARM64",
+            "repo": "${{ inputs.repo }}",
+            "version": "${{ inputs.version }}"
+         }
+      },
+      "debian-trixie-build-X64": {
+         "if": "${{ (inputs.distributions == '' || contains(format(',{0},', inputs.distributions), format(',{0},', 'debian-trixie'))) && (inputs.architectures == '' || contains(format(',{0},', inputs.architectures), format(',{0},', 'X64'))) }}",
+         "uses": "./.github/workflows/build_packages.yml",
+         "with": {
+            "asan": "${{ inputs.asan }}",
+            "branch": "${{ inputs.branch }}",
+            "experimental": "${{ inputs.experimental }}",
+            "name": "debian-trixie",
+            "platform": "X64",
+            "repo": "${{ inputs.repo }}",
+            "version": "${{ inputs.version }}"
+         }
+      },
+      "ubuntu-jammy-build-ARM64": {
+         "if": "${{ (inputs.distributions == '' || contains(format(',{0},', inputs.distributions), format(',{0},', 'ubuntu-jammy'))) && (inputs.architectures == '' || contains(format(',{0},', inputs.architectures), format(',{0},', 'ARM64'))) }}",
+         "uses": "./.github/workflows/build_packages.yml",
+         "with": {
+            "asan": "${{ inputs.asan }}",
+            "branch": "${{ inputs.branch }}",
+            "experimental": "${{ inputs.experimental }}",
+            "name": "ubuntu-jammy",
+            "platform": "ARM64",
+            "repo": "${{ inputs.repo }}",
+            "version": "${{ inputs.version }}"
+         }
+      },
+      "ubuntu-jammy-build-X64": {
+         "if": "${{ (inputs.distributions == '' || contains(format(',{0},', inputs.distributions), format(',{0},', 'ubuntu-jammy'))) && (inputs.architectures == '' || contains(format(',{0},', inputs.architectures), format(',{0},', 'X64'))) }}",
+         "uses": "./.github/workflows/build_packages.yml",
+         "with": {
+            "asan": "${{ inputs.asan }}",
+            "branch": "${{ inputs.branch }}",
+            "experimental": "${{ inputs.experimental }}",
+            "name": "ubuntu-jammy",
+            "platform": "X64",
+            "repo": "${{ inputs.repo }}",
+            "version": "${{ inputs.version }}"
+         }
+      },
+      "ubuntu-noble-build-ARM64": {
+         "if": "${{ (inputs.distributions == '' || contains(format(',{0},', inputs.distributions), format(',{0},', 'ubuntu-noble'))) && (inputs.architectures == '' || contains(format(',{0},', inputs.architectures), format(',{0},', 'ARM64'))) }}",
+         "uses": "./.github/workflows/build_packages.yml",
+         "with": {
+            "asan": "${{ inputs.asan }}",
+            "branch": "${{ inputs.branch }}",
+            "experimental": "${{ inputs.experimental }}",
+            "name": "ubuntu-noble",
+            "platform": "ARM64",
+            "repo": "${{ inputs.repo }}",
+            "version": "${{ inputs.version }}"
+         }
+      },
+      "ubuntu-noble-build-X64": {
+         "if": "${{ (inputs.distributions == '' || contains(format(',{0},', inputs.distributions), format(',{0},', 'ubuntu-noble'))) && (inputs.architectures == '' || contains(format(',{0},', inputs.architectures), format(',{0},', 'X64'))) }}",
+         "uses": "./.github/workflows/build_packages.yml",
+         "with": {
+            "asan": "${{ inputs.asan }}",
+            "branch": "${{ inputs.branch }}",
+            "experimental": "${{ inputs.experimental }}",
+            "name": "ubuntu-noble",
+            "platform": "X64",
+            "repo": "${{ inputs.repo }}",
+            "version": "${{ inputs.version }}"
+         }
+      }
+   },
+   "name": "build",
+   "on": {
+      "workflow_call": {
+         "inputs": {
+            "architectures": {
+               "required": false,
+               "type": "string"
+            },
+            "asan": {
+               "required": false,
+               "type": "boolean"
+            },
+            "branch": {
+               "required": false,
+               "type": "string"
+            },
+            "distributions": {
+               "required": false,
+               "type": "string"
+            },
+            "experimental": {
+               "required": false,
+               "type": "boolean"
+            },
+            "repo": {
+               "required": false,
+               "type": "string"
+            },
+            "version": {
+               "required": true,
+               "type": "string"
+            }
+         }
+      }
+   }
+}
